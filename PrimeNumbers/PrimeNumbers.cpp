@@ -10,9 +10,9 @@ int main()
 	cin>>maxNumberToCheck;
 
 	Array arrayWithPrimeNumbers;
-	cout<<"Size before: "; cout<<arrayWithPrimeNumbers.GetSize();
-	arrayWithPrimeNumbers.AddElement(5);
-	cout<<"Size after: "; cout<<arrayWithPrimeNumbers.GetSize();
+	cout<<"Size before: "; cout<<arrayWithPrimeNumbers.GetNumberOfElements()<<endl;
+	arrayWithPrimeNumbers.AddElement(maxNumberToCheck);
+	cout<<"Size after: "; cout<<arrayWithPrimeNumbers.GetNumberOfElements()<<endl;
 //	for (int i=0;i<maxNumberToCheck;i++)
 //	{
 //		cout<<"inside first for"<<endl;

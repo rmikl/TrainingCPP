@@ -1,50 +1,64 @@
 class Array
 {
 	private:
-		int* array=NULL;
+		int * array;
 		int arraySize;
+		int numberOfElements;
 	public:
-		
 		Array();
-		int GetSize(){return arraySize;};
-		int GetElement(int index)
-		{
-			return array[index-1];
-		};
-		void AddElement(int newElement)
-		{
-			if (array==NULL)
-			{
-				arraySize=1;
-				array = new int[arraySize];
-				array[0] = newElement;
-			}
-			else
-			{
-				
-				int* newArray = new int [arraySize];
-				for (int i = 0 ; i < arraySize-1;i++)
-				{
-					newArray[i]=array[i];
-				}
-				delete array;
-				newArray[arraySize-1]=newElement;
-				array = new int[arraySize];
-				for (int i = 0; i< arraySize-1 ; i++)
-				{
-					array[i]=newArray[i];
-				}
- 				delete newArray;
-			};
-
-		};
+		~Array();
+		void ExpandArray();
+		void AddElement(int newElement);
+		int GetNumberOfElements();
+		//int GetElementWithIndex();
+		void InitializeArray(int from);
 };
 
 
-Array::Array()
+
+Array::Array(){
+	arraySize=5;
+	numberOfElements=0;
+	array = new int[arraySize];
+};
+
+Array::~Array(){
+	delete [] array;
+}
+
+void Array::ExpandArray(){
+	arraySize = arraySize *2;
+	int * tmpArray = new int [arraySize];
+	
+	for (int i = 0 ; i < numberOfElements; i++ )
+	{
+		tmpArray[i]=array[i];
+	}
+	delete array;
+	array = tmpArray;
+	delete tmpArray;
+	InitializeArray(numberOfElements);
+}
+
+
+void Array::InitializeArray(int from )
 {
-	array = new int[0];
-	arraySize=0;	
-};
+	for(int i = from ; i< arraySize ; i++)
+	{
+		array[i] = 0;
+	}
+}
 
+void Array::AddElement(int newElement){
+	numberOfElements++;
+	if (arraySize == numberOfElements )
+	{
+		ExpandArray();
+	}
+	array[numberOfElements]=newElement;
+}
 
+int Array::GetNumberOfElements()
+{
+	return numberOfElements;
+}
