@@ -20,4 +20,4 @@ matrix:
 before_install:
     - eval "${MATRIX_EVAL}"
 
-script: ./buildscript.sh
+script: ./buildScript.sh
