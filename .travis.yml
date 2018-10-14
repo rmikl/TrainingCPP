@@ -20,4 +20,4 @@ matrix:
 before_install:
     - eval "${MATRIX_EVAL}"
 
-script: g++ -Wall -Werror -o software *.cpp && ./software
+script: ./buildscript.sh

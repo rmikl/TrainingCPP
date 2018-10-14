@@ -4,7 +4,6 @@ using namespace std;
 
 int main()
 {	
-	int arraySize;
 	int maxNumberToCheck;
 	cout<<"Please give me number to which i'll check prime numbers"<<endl;
 	cin>>maxNumberToCheck;
