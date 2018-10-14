@@ -10,7 +10,7 @@ class Array
 		void ExpandArray();
 		void AddElement(int newElement);
 		int GetNumberOfElements();
-		//int GetElementWithIndex();
+		int GetElementWithIndex(int index);
 		void InitializeArray(int from);
 };
 
@@ -50,12 +50,12 @@ void Array::InitializeArray(int from )
 }
 
 void Array::AddElement(int newElement){
-	numberOfElements++;
 	if (arraySize == numberOfElements )
 	{
 		ExpandArray();
 	}
 	array[numberOfElements]=newElement;
+	numberOfElements++;
 }
 
 int Array::GetNumberOfElements()
@@ -63,4 +63,7 @@ int Array::GetNumberOfElements()
 	return numberOfElements;
 }
 
-
+int Array::GetElementWithIndex(int index)
+{
+	return array[index];
+}
