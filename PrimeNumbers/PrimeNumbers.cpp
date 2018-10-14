@@ -11,7 +11,7 @@ int main()
 	cin>>maxNumberToCheck;
 
 	Array arrayWithPrimeNumbers;
-	cout<<"Size before: "; cout<<arrayWithPrimeNumbers.GetNumberOfElements()<<endl;
+//	cout<<"Size before: "; cout<<arrayWithPrimeNumbers.GetNumberOfElements()<<endl;
 	
 	
 	for (int i = 2 ; i < maxNumberToCheck+1 ; i++)
@@ -22,10 +22,10 @@ int main()
 		else{
 			for (int j = 0 ; j < arrayWithPrimeNumbers.GetNumberOfElements() ; j++)
 			{
-				cout << "number before if i: "<< i << endl;
-				cout << "number before if array[j]: " << arrayWithPrimeNumbers.GetElementWithIndex(j) << endl;
+	//			cout << "number before if i: "<< i << endl;
+	//			cout << "number before if array[j]: " << arrayWithPrimeNumbers.GetElementWithIndex(j) << endl;
 				int modulo = i % arrayWithPrimeNumbers.GetElementWithIndex(j);
-				cout << "value of modulo: " << modulo << endl;
+	//			cout << "value of modulo: " << modulo << endl;
 
 				if(modulo == 1){
 					counter++;											
@@ -34,7 +34,7 @@ int main()
 				}
 
 				if(counter > 0){
-					cout << "counter: " << counter << endl;
+	//				cout << "counter: " << counter << endl;
 					arrayWithPrimeNumbers.AddElement(i);
 					counter = 0;
 					break;
@@ -43,11 +43,11 @@ int main()
 			}
 		}
 	}
-	cout<<"Size After: "<<arrayWithPrimeNumbers.GetNumberOfElements()<<endl;
-
+//	cout<<"Size After: "<<arrayWithPrimeNumbers.GetNumberOfElements()<<endl;
+	cout << "list of prime numbers: "<< endl;
 	for (int i = 0 ; i < arrayWithPrimeNumbers.GetNumberOfElements(); i++)
 	{
-		cout<<"array["<<i<<"] : "<<arrayWithPrimeNumbers.GetElementWithIndex(i)<<endl;
+		cout<<arrayWithPrimeNumbers.GetElementWithIndex(i)<<endl;
 	}
 
 	return 0;
