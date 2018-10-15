@@ -1,5 +1,8 @@
 #include<iostream>
-#include "Array.h"
+//
+#include "../Classes/Array.h"
+
+
 using namespace std;
 
 int main()
