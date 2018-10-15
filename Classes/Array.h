@@ -1,3 +1,6 @@
+using namespace std;
+
+
 class Array
 {
 	private:
@@ -12,9 +15,10 @@ class Array
 		int GetNumberOfElements();
 		int GetElementWithIndex(int index);
 		void InitializeArray(int from);
+		void ShowArray();
+		void BubleSort();
+		void MergeWithArray(int * array);
 };
-
-
 
 Array::Array(){
 	arraySize=5;
@@ -66,4 +70,28 @@ int Array::GetNumberOfElements()
 int Array::GetElementWithIndex(int index)
 {
 	return array[index];
+}
+
+void Array::ShowArray(){
+	for (int i = 0 ; i < numberOfElements ; i++)
+	{
+		cout << array[i] << endl;
+	}
+}
+
+void Array::BubleSort()
+{
+	int tmp;
+	for (int i = 0 ; i < numberOfElements - 1 ; i++)
+	{
+		for (int j = 0 ; j < numberOfElements - i - 1 ; j ++)
+		{
+			if (array[j] > array[j+1]) 
+			{
+				tmp = array[j];
+				array[j] = array[j+1];
+				array[j+1] = tmp;
+			}
+		}
+	}
 }
