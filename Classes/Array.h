@@ -7,9 +7,10 @@ class Array
 		int * array;
 		int arraySize;
 		int numberOfElements;
-		Array merge(Array left , Array right , Array mergedArray);
+		Array mergeArrayForMergeSort(Array left , Array right , Array mergedArray);
 		Array splitArrayForMergeSort(Array splitedArray);
-
+		Array quickSort(Array array, int beginIndex,int endIndex);
+		int partitionIndex(Array array, int beginIndex, int endIndex);
 
 	public:
 		Array();
@@ -25,7 +26,7 @@ class Array
 		int MaxValue();
 		int MinValue();
 		double Median();
-		int &operator[](int i)
+		int operator[](int i)
 		{
 			if(i > numberOfElements){
 				cout << "Index out of Bound"<<endl;
@@ -33,7 +34,13 @@ class Array
 			}
 			return array[i];
 		}
+
+
 		void MergeSort();
+		void QuickSort();
+
+
+	
 		
 };
 
@@ -163,7 +170,7 @@ double Array::Median()
 }
 
 
-Array Array::merge(Array left, Array right, Array mergedArray)
+Array Array::mergeArrayForMergeSort(Array left, Array right, Array mergedArray)
 {	
 //	cout << "merge exec" << endl;
 	int i,j,k,nL,nR;
@@ -255,7 +262,7 @@ Array Array::splitArrayForMergeSort(Array splitedArray)
 	splitArrayForMergeSort(left);
 //	cout << "right : ";
 	splitArrayForMergeSort(right);
-	merge(left, right, splitedArray);
+	mergeArrayForMergeSort(left, right, splitedArray);
 	return splitedArray;
 }
 
@@ -273,8 +280,58 @@ void Array::MergeSort()
 	}
 }
 
+Array Array::quickSort(Array array, int beginIndex, int endIndex)
+{
+//	cout << "inside quicksort method"<<endl;
+	if(beginIndex < endIndex)
+	{
+		int pIndex;
+		pIndex = partitionIndex(array, beginIndex, endIndex);
+		array.quickSort(array,beginIndex, pIndex - 1);
+		array.quickSort(array, pIndex +1  , endIndex);
+	}
+	return array;
+}
 
+int Array::partitionIndex(Array array , int beginIndex, int endIndex)
+{
+//	cout << "inside partition idex"<<endl;
+	int pivot;
+	pivot = array[endIndex];
+	int partitionIndex;
+	partitionIndex = beginIndex;
 
+	for (int i = beginIndex ; i < endIndex -1; i++)
+	{
+//		cout << "inside partition idex inside for"<<endl;
+		if(array[i]<= pivot)
+		{
+			int tmp;
+			tmp = array[i];
+			array.SetElementWithIndex(i,array[partitionIndex]);
+			array.SetElementWithIndex(partitionIndex,tmp);
+			partitionIndex++;
+		}
+	}
+	int tmp;
+	tmp = array[partitionIndex];
+	array.SetElementWithIndex(partitionIndex,array[endIndex]);
+	array.SetElementWithIndex(endIndex,tmp);
+	return partitionIndex;
+}
 
+void Array::QuickSort()
+{
+	Array arr;
+	for (int i = 0 ; i < numberOfElements ; i++){
+		arr.AddElement(array[i]);
+	}	
+	arr = arr.quickSort(arr,0,arr.GetNumberOfElements());
+
+	for(int i = 0 ; i < numberOfElements ; i ++)
+	{
+		array[i] = arr[i];
+	}
+}
 
 
