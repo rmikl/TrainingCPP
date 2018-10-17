@@ -16,10 +16,10 @@ int main()
         cin >> numberToAdd;
         array.AddElement(numberToAdd);
     }
-    
+
+
     cout << "Array Before Sort: " << endl;
     array.ShowArray();
-
     array.QuickSort();
     cout << "Array After Sort: " << endl;
     array.ShowArray();

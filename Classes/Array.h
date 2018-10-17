@@ -288,7 +288,7 @@ Array Array::quickSort(Array array, int beginIndex, int endIndex)
 		int pIndex;
 		pIndex = partitionIndex(array, beginIndex, endIndex);
 		array.quickSort(array,beginIndex, pIndex - 1);
-		array.quickSort(array, pIndex +1  , endIndex);
+		array.quickSort(array, pIndex + 1  , endIndex);
 	}
 	return array;
 }
@@ -296,12 +296,10 @@ Array Array::quickSort(Array array, int beginIndex, int endIndex)
 int Array::partitionIndex(Array array , int beginIndex, int endIndex)
 {
 //	cout << "inside partition idex"<<endl;
-	int pivot;
-	pivot = array[endIndex];
-	int partitionIndex;
-	partitionIndex = beginIndex;
+	int pivot = array[endIndex];
+	int partitionIndex = beginIndex;
 
-	for (int i = beginIndex ; i < endIndex -1; i++)
+	for (int i = beginIndex ; i < endIndex ; i++)
 	{
 //		cout << "inside partition idex inside for"<<endl;
 		if(array[i]<= pivot)
@@ -311,6 +309,7 @@ int Array::partitionIndex(Array array , int beginIndex, int endIndex)
 			array.SetElementWithIndex(i,array[partitionIndex]);
 			array.SetElementWithIndex(partitionIndex,tmp);
 			partitionIndex++;
+
 		}
 	}
 	int tmp;
@@ -326,7 +325,7 @@ void Array::QuickSort()
 	for (int i = 0 ; i < numberOfElements ; i++){
 		arr.AddElement(array[i]);
 	}	
-	arr = arr.quickSort(arr,0,arr.GetNumberOfElements());
+	arr = arr.quickSort(arr,0,numberOfElements-1);
 
 	for(int i = 0 ; i < numberOfElements ; i ++)
 	{
