@@ -19,6 +19,14 @@ bool isNumber(string str)
     }
 }
 
+
+
+bool is_number(const std::string& s)
+{
+    std::string::const_iterator it = s.begin();
+    while (it != s.end() && std::isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
+}
 //program that is reading only number from given files and store it in Array object defined in ../Classes/Array.h
 int main()
 {
@@ -35,7 +43,7 @@ int main()
         while(!file.eof()){
             string tmp;            
             file >> tmp;
-            if(!isNumber(tmp)){   
+            if(is_number(tmp)){   
 
                 tmp += '\n';
                 content_of_file += tmp;

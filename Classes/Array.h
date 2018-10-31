@@ -32,7 +32,7 @@ class Array
 		int * GetAddr(int);
 		void MergeSort();
 		void QuickSort();
-		Array Swap(int,int);
+		//Array Swap(int,int);
 };
 
 int * Array::GetAddr(int index)
@@ -414,16 +414,16 @@ void Array::QuickSort()
 
 
 
-Array Array::Swap(int first, int second)
-{
-
-	int tmp;
-	int * b = &array[first];
-	int * c = &array[second];
-	
-	tmp = * b;
-	* b = * c;
-	* c = tmp;
+//Array Array::Swap(int first, int second)
+//{
+//
+//	int tmp;
+//	int * b = &array[first];
+//	int * c = &array[second];
+//	
+//	tmp = * b;
+//	* b = * c;
+//	* c = tmp;
 	
 //	cout << "inside swap"  << endl;
 //	cout << first << " : first"<<endl;
@@ -447,4 +447,4 @@ Array Array::Swap(int first, int second)
 		//arr[first]=arr[second];
 		//arr[second]=tmp;
 	//}
-}
+//}
