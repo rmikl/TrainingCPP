@@ -27,7 +27,7 @@ int main()
     ifstream file;
     cout<<"Give me the name of the file that you store "<<endl;
     cin>> location_of_file;
-    file.open(location_of_file);
+    file.open(location_of_file.c_str());
     string content_of_file;
     
     if(file.is_open())
