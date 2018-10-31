@@ -1,4 +1,4 @@
 */*.out
 */*.exe
 ./software
-
+*/log.txt

@@ -9,12 +9,14 @@ class Array
 		int numberOfElements;
 		Array mergeArrayForMergeSort(Array left , Array right , Array mergedArray);
 		Array splitArrayForMergeSort(Array splitedArray);
-		Array quickSort(Array array, int beginIndex,int endIndex);
-		int partitionIndex(Array array, int beginIndex, int endIndex);
-
+		Array quickSort(Array, int beginIndex,int endIndex);
+		int partitionIndex(Array& array, int beginIndex, int endIndex);
+		
 	public:
+		Array(Array&);
 		Array();
 		~Array();
+		Array& operator=(const Array&);
 		void ExpandArray();
 		void AddElement(int newElement);
 		int GetNumberOfElements();
@@ -26,36 +28,67 @@ class Array
 		int MaxValue();
 		int MinValue();
 		double Median();
-		int operator[](int i)
-		{
-			if(i > numberOfElements){
-				cout << "Index out of Bound"<<endl;
-				return array[0];
-			}
-			return array[i];
-		}
-
-
+		int& operator[](int);
+		int * GetAddr(int);
 		void MergeSort();
 		void QuickSort();
-
-
-	
-		
+		Array Swap(int,int);
 };
+
+int * Array::GetAddr(int index)
+{
+	return &array[index];
+}
+
+Array::Array( Array& src)
+{
+	arraySize = src.arraySize;
+	numberOfElements = src.numberOfElements;
+	array = new int[src.arraySize];
+	copy(src.array,src.array+numberOfElements,array);
+}
 
 Array::Array(){
 	arraySize=5;
 	numberOfElements=0;
 	array = new int[arraySize];
-};
+}
+//Array::Array(Array arr)
+//{
+//	arraySize = arr.GetNumberOfElements()+1;
+//	numberOfElements=0;
+//	array = new int[arraySize];
+//
+//	for (int i = 0 ; i < numberOfElements; i++)
+//	{
+//		array[i] = arr.GetElementWithIndex(i);
+//	}
+//	
+//}
+
 
 Array::~Array(){
 	delete [] array;
 }
 
+Array& Array::operator=(const Array& src)
+{
+	if(this!=&src)
+	{
+		arraySize = src.arraySize;
+		numberOfElements = src.numberOfElements;
+		array = new int[src.arraySize];
+		copy(src.array,src.array+numberOfElements,array);
+		return *this;
+	}
+	else
+	{
+		return *this;
+	}
+}
+
 void Array::ExpandArray(){
-	arraySize = arraySize *2;
+	arraySize = arraySize * 2;
 	int * tmpArray = new int [arraySize];
 	
 	for (int i = 0 ; i < numberOfElements; i++ )
@@ -63,11 +96,19 @@ void Array::ExpandArray(){
 		tmpArray[i]=array[i];
 	}
 	delete array;
-	array = tmpArray;
+	array = new int[arraySize];
+	for (int i = 0 ; i < numberOfElements ; i++)
+	{
+		array[i]=tmpArray[i];
+	}
 	delete tmpArray;
 	InitializeArray(numberOfElements);
 }
 
+int& Array::operator[](int i)			
+{
+	return array[i];
+}
 
 void Array::InitializeArray(int from )
 {
@@ -79,7 +120,7 @@ void Array::InitializeArray(int from )
 
 void Array::AddElement(int newElement){
 	if (arraySize == numberOfElements )
-	{
+	{//	cout << "w expland array"<< endl;
 		ExpandArray();
 	}
 	array[numberOfElements]=newElement;
@@ -93,14 +134,20 @@ int Array::GetNumberOfElements()
 
 int Array::GetElementWithIndex(int index)
 {
-	return array[index];
+	if(index >= numberOfElements || index < 0)
+	{
+		cout << "wanted element is out of index" << endl;
+		return -1;
+	}
+	
+return array[index];
 }
 
 
 void Array::SetElementWithIndex(int index, int value)
 {
 //	cout<< "SetElementWithIndex exec"<<endl;
-	while(index > arraySize)
+	while(index >= arraySize)
 	{
 	//	cout << "expand array" << endl;
 		ExpandArray();
@@ -111,7 +158,8 @@ void Array::SetElementWithIndex(int index, int value)
 void Array::ShowArray(){
 	for (int i = 0 ; i < numberOfElements ; i++)
 	{
-		cout << array[i] << endl;
+	//	cout << GetAddr(i)<< " : address of arra[]"<< endl;
+		cout << array[i] << " | adres : " << GetAddr(i) << endl;
 	}
 }
 
@@ -282,39 +330,68 @@ void Array::MergeSort()
 
 Array Array::quickSort(Array array, int beginIndex, int endIndex)
 {
+	
+//	cout << "jak wyglada tablica przekazana to qiockSort" << endl;
+//	array.ShowArray();
+//	cout << beginIndex << " : beginIndex"<<endl;
+//	cout << endIndex << " : endIndex " << endl;
 //	cout << "inside quicksort method"<<endl;
-	if(beginIndex < endIndex)
+	if(beginIndex <endIndex)
 	{
 		int pIndex;
 		pIndex = partitionIndex(array, beginIndex, endIndex);
-		array.quickSort(array,beginIndex, pIndex - 1);
-		array.quickSort(array, pIndex + 1  , endIndex);
+//		cout << "left" << endl;
+		array=array.quickSort(array,beginIndex, pIndex - 1);
+//		cout <<"right" << endl;
+		array=array.quickSort(array,  pIndex +1, endIndex);
 	}
+//	cout << "jak wyglada tablica wychodzaca z qiockSort" << endl;
+//	array.ShowArray();
 	return array;
 }
 
-int Array::partitionIndex(Array array , int beginIndex, int endIndex)
+int Array::partitionIndex(Array& ar , int beginIndex, int endIndex)
 {
 //	cout << "inside partition idex"<<endl;
-	int pivot = array.GetElementWithIndex(endIndex);
+	int pivot = ar.GetElementWithIndex(endIndex);
+//	cout << pivot << " : pivot"<< endl;
 	int partitionIndex = beginIndex;
-
-	for (int i = beginIndex ; i < endIndex ; i++)
+//	cout << "jak wyglada tablica przekazana to partition index" << endl;
+//	ar.ShowArray();
+//	cout << beginIndex << " : beginIndex" << endl;
+//	cout << endIndex << " : endIndex" <<  endl;
+	for (int i = beginIndex ; i < endIndex  ; i++)
 	{
-//		cout << "inside partition idex inside for"<<endl;
-		if(array[i]<= pivot)
+//		cout << partitionIndex << " : partiotionIndex !!!!!!!!!!"<< endl;
+//		cout << i << " : i !!!!!!!!!!"<< endl;
+//		cout << ar.GetElementWithIndex(i) << " : array[i]" << endl;
+//		cout << "w partitionIndex w for"<<endl;
+		if(ar.GetElementWithIndex(i)<= pivot)
 		{
+//			cout << i << " : i" << endl;
+//			cout << ar.GetElementWithIndex(i) << " : array[i]" << endl;
+//			cout << ar.GetElementWithIndex(partitionIndex) << " : array[pI]" << endl;
 			int tmp;
-			tmp = array.GetElementWithIndex(i);
-			array.SetElementWithIndex(i,array.GetElementWithIndex(partitionIndex));
-			array.SetElementWithIndex(partitionIndex,tmp);
+			tmp = ar.GetElementWithIndex(i);
+			ar.SetElementWithIndex(i,ar.GetElementWithIndex(partitionIndex));
+			ar.SetElementWithIndex(partitionIndex,tmp);
 			partitionIndex++;
+//			cout << "swap" << endl;
+			
+//			cout << ar.GetElementWithIndex(i) << " : array[i]" << endl;
+//			cout << ar.GetElementWithIndex(partitionIndex) << " : array[pI]" << endl;
+//			ar.ShowArray();
 		}
 	}
+//	cout << "w partitionIndex po for"<<endl;
 	int tmp;
-	tmp = array.GetElementWithIndex(partitionIndex);
-	array.SetElementWithIndex(partitionIndex,array.GetElementWithIndex(endIndex));
-	array.SetElementWithIndex(endIndex,tmp);
+	tmp = ar.GetElementWithIndex(partitionIndex);
+	ar.SetElementWithIndex(partitionIndex,ar.GetElementWithIndex(endIndex));
+	ar.SetElementWithIndex(endIndex,tmp);
+//	cout << partitionIndex<< " : partition Index"<<endl;
+//	cout << "jak wyglada tablica na na koniec partiotionIndex ktora zostanie przekazana do quick sort"<< endl;
+//	ar.ShowArray();
+//	cout << partitionIndex << " : wynik partiotionIndex" << endl;
 	return partitionIndex;
 }
 
@@ -323,13 +400,51 @@ void Array::QuickSort()
 	Array arr;
 	for (int i = 0 ; i < numberOfElements ; i++){
 		arr.AddElement(array[i]);
-	}	
-	arr = arr.quickSort(arr,0,numberOfElements-1);
+	}
+//	arr.ShowArray();	
+//	cout << "ilosc el w tablicy " << arr.GetNumberOfElements() << endl;
+	arr=arr.quickSort(arr,0,numberOfElements-1);
 
 	for(int i = 0 ; i < numberOfElements ; i ++)
 	{
 		array[i] = arr.GetElementWithIndex(i);
 	}
+	
 }
 
 
+
+Array Array::Swap(int first, int second)
+{
+
+	int tmp;
+	int * b = &array[first];
+	int * c = &array[second];
+	
+	tmp = * b;
+	* b = * c;
+	* c = tmp;
+	
+//	cout << "inside swap"  << endl;
+//	cout << first << " : first"<<endl;
+//	cout << second << " : second" << endl;
+//	if (first >= numberOfElements || second >= numberOfElements || first < 0 || second < 0)
+//	{cout << "inside if" << endl;
+//		return;
+//	}
+//	else 
+//	{
+//		for (int i = first ; i < second;i++)
+//		{
+//			cout << first << " : arr[]++ "<<endl;
+//			i++;
+//		
+//		}
+//		cout << *(array+first) << " : arr[1] "<< endl;
+//		cout << *(array+second) << " : arr[2] "<< endl;
+//		//std::swap(arr[first],arr[second]);
+		//tmp =arr[first];	
+		//arr[first]=arr[second];
+		//arr[second]=tmp;
+	//}
+}

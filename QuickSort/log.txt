@@ -1,0 +1,332 @@
+
+How much numbers you want to add to array ? 
+Array Before Sort: 
+9 | adres : 0x77c010
+1 | adres : 0x77c014
+8 | adres : 0x77c018
+2 | adres : 0x77c01c
+4 | adres : 0x77c020
+9 | adres : 0x77c030
+1 | adres : 0x77c034
+8 | adres : 0x77c038
+2 | adres : 0x77c03c
+4 | adres : 0x77c040
+ilosc el w tablicy 5
+jak wyglada tablica przekazana to qiockSort
+9 | adres : 0x77c050
+1 | adres : 0x77c054
+8 | adres : 0x77c058
+2 | adres : 0x77c05c
+4 | adres : 0x77c060
+0 : beginIndex
+4 : endIndex 
+4 : pivot
+jak wyglada tablica przekazana to partition index
+9 | adres : 0x77c050
+1 | adres : 0x77c054
+8 | adres : 0x77c058
+2 | adres : 0x77c05c
+4 | adres : 0x77c060
+0 : beginIndex
+4 : endIndex
+0 : partiotionIndex !!!!!!!!!!
+0 : i !!!!!!!!!!
+9 : array[i]
+w partitionIndex w for
+0 : partiotionIndex !!!!!!!!!!
+1 : i !!!!!!!!!!
+1 : array[i]
+w partitionIndex w for
+1 : i
+1 : array[i]
+9 : array[pI]
+swap
+9 : array[i]
+9 : array[pI]
+1 | adres : 0x77c050
+9 | adres : 0x77c054
+8 | adres : 0x77c058
+2 | adres : 0x77c05c
+4 | adres : 0x77c060
+1 : partiotionIndex !!!!!!!!!!
+2 : i !!!!!!!!!!
+8 : array[i]
+w partitionIndex w for
+1 : partiotionIndex !!!!!!!!!!
+3 : i !!!!!!!!!!
+2 : array[i]
+w partitionIndex w for
+3 : i
+2 : array[i]
+9 : array[pI]
+swap
+9 : array[i]
+8 : array[pI]
+1 | adres : 0x77c050
+2 | adres : 0x77c054
+8 | adres : 0x77c058
+9 | adres : 0x77c05c
+4 | adres : 0x77c060
+w partitionIndex po for
+2 : partition Index
+jak wyglada tablica na na koniec partiotionIndex ktora zostanie przekazana do quick sort
+1 | adres : 0x77c050
+2 | adres : 0x77c054
+4 | adres : 0x77c058
+9 | adres : 0x77c05c
+8 | adres : 0x77c060
+2 : wynik partiotionIndex
+left
+jak wyglada tablica przekazana to qiockSort
+1 | adres : 0x77c070
+2 | adres : 0x77c074
+4 | adres : 0x77c078
+9 | adres : 0x77c07c
+8 | adres : 0x77c080
+0 : beginIndex
+1 : endIndex 
+2 : pivot
+jak wyglada tablica przekazana to partition index
+1 | adres : 0x77c070
+2 | adres : 0x77c074
+4 | adres : 0x77c078
+9 | adres : 0x77c07c
+8 | adres : 0x77c080
+0 : beginIndex
+1 : endIndex
+0 : partiotionIndex !!!!!!!!!!
+0 : i !!!!!!!!!!
+1 : array[i]
+w partitionIndex w for
+0 : i
+1 : array[i]
+1 : array[pI]
+swap
+1 : array[i]
+2 : array[pI]
+1 | adres : 0x77c070
+2 | adres : 0x77c074
+4 | adres : 0x77c078
+9 | adres : 0x77c07c
+8 | adres : 0x77c080
+w partitionIndex po for
+1 : partition Index
+jak wyglada tablica na na koniec partiotionIndex ktora zostanie przekazana do quick sort
+1 | adres : 0x77c070
+2 | adres : 0x77c074
+4 | adres : 0x77c078
+9 | adres : 0x77c07c
+8 | adres : 0x77c080
+1 : wynik partiotionIndex
+left
+jak wyglada tablica przekazana to qiockSort
+1 | adres : 0x77c090
+2 | adres : 0x77c094
+4 | adres : 0x77c098
+9 | adres : 0x77c09c
+8 | adres : 0x77c0a0
+0 : beginIndex
+0 : endIndex 
+1 : pivot
+jak wyglada tablica przekazana to partition index
+1 | adres : 0x77c090
+2 | adres : 0x77c094
+4 | adres : 0x77c098
+9 | adres : 0x77c09c
+8 | adres : 0x77c0a0
+0 : beginIndex
+0 : endIndex
+w partitionIndex po for
+0 : partition Index
+jak wyglada tablica na na koniec partiotionIndex ktora zostanie przekazana do quick sort
+1 | adres : 0x77c090
+2 | adres : 0x77c094
+4 | adres : 0x77c098
+9 | adres : 0x77c09c
+8 | adres : 0x77c0a0
+0 : wynik partiotionIndex
+left
+jak wyglada tablica przekazana to qiockSort
+1 | adres : 0x77c0b0
+2 | adres : 0x77c0b4
+4 | adres : 0x77c0b8
+9 | adres : 0x77c0bc
+8 | adres : 0x77c0c0
+0 : beginIndex
+-1 : endIndex 
+jak wyglada tablica wychodzaca z qiockSort
+1 | adres : 0x77c0b0
+2 | adres : 0x77c0b4
+4 | adres : 0x77c0b8
+9 | adres : 0x77c0bc
+8 | adres : 0x77c0c0
+right
+jak wyglada tablica przekazana to qiockSort
+1 | adres : 0x77c0b0
+2 | adres : 0x77c0b4
+4 | adres : 0x77c0b8
+9 | adres : 0x77c0bc
+8 | adres : 0x77c0c0
+1 : beginIndex
+0 : endIndex 
+jak wyglada tablica wychodzaca z qiockSort
+1 | adres : 0x77c0b0
+2 | adres : 0x77c0b4
+4 | adres : 0x77c0b8
+9 | adres : 0x77c0bc
+8 | adres : 0x77c0c0
+jak wyglada tablica wychodzaca z qiockSort
+1 | adres : 0x77c090
+2 | adres : 0x77c094
+4 | adres : 0x77c098
+9 | adres : 0x77c09c
+8 | adres : 0x77c0a0
+right
+jak wyglada tablica przekazana to qiockSort
+1 | adres : 0x77c090
+2 | adres : 0x77c094
+4 | adres : 0x77c098
+9 | adres : 0x77c09c
+8 | adres : 0x77c0a0
+2 : beginIndex
+1 : endIndex 
+jak wyglada tablica wychodzaca z qiockSort
+1 | adres : 0x77c090
+2 | adres : 0x77c094
+4 | adres : 0x77c098
+9 | adres : 0x77c09c
+8 | adres : 0x77c0a0
+jak wyglada tablica wychodzaca z qiockSort
+1 | adres : 0x77c070
+2 | adres : 0x77c074
+4 | adres : 0x77c078
+9 | adres : 0x77c07c
+8 | adres : 0x77c080
+right
+jak wyglada tablica przekazana to qiockSort
+1 | adres : 0x77c070
+2 | adres : 0x77c074
+4 | adres : 0x77c078
+9 | adres : 0x77c07c
+8 | adres : 0x77c080
+3 : beginIndex
+4 : endIndex 
+8 : pivot
+jak wyglada tablica przekazana to partition index
+1 | adres : 0x77c070
+2 | adres : 0x77c074
+4 | adres : 0x77c078
+9 | adres : 0x77c07c
+8 | adres : 0x77c080
+3 : beginIndex
+4 : endIndex
+3 : partiotionIndex !!!!!!!!!!
+3 : i !!!!!!!!!!
+9 : array[i]
+w partitionIndex w for
+w partitionIndex po for
+3 : partition Index
+jak wyglada tablica na na koniec partiotionIndex ktora zostanie przekazana do quick sort
+1 | adres : 0x77c070
+2 | adres : 0x77c074
+4 | adres : 0x77c078
+8 | adres : 0x77c07c
+9 | adres : 0x77c080
+3 : wynik partiotionIndex
+left
+jak wyglada tablica przekazana to qiockSort
+1 | adres : 0x77c090
+2 | adres : 0x77c094
+4 | adres : 0x77c098
+8 | adres : 0x77c09c
+9 | adres : 0x77c0a0
+3 : beginIndex
+2 : endIndex 
+jak wyglada tablica wychodzaca z qiockSort
+1 | adres : 0x77c090
+2 | adres : 0x77c094
+4 | adres : 0x77c098
+8 | adres : 0x77c09c
+9 | adres : 0x77c0a0
+right
+jak wyglada tablica przekazana to qiockSort
+1 | adres : 0x77c090
+2 | adres : 0x77c094
+4 | adres : 0x77c098
+8 | adres : 0x77c09c
+9 | adres : 0x77c0a0
+4 : beginIndex
+4 : endIndex 
+9 : pivot
+jak wyglada tablica przekazana to partition index
+1 | adres : 0x77c090
+2 | adres : 0x77c094
+4 | adres : 0x77c098
+8 | adres : 0x77c09c
+9 | adres : 0x77c0a0
+4 : beginIndex
+4 : endIndex
+w partitionIndex po for
+4 : partition Index
+jak wyglada tablica na na koniec partiotionIndex ktora zostanie przekazana do quick sort
+1 | adres : 0x77c090
+2 | adres : 0x77c094
+4 | adres : 0x77c098
+8 | adres : 0x77c09c
+9 | adres : 0x77c0a0
+4 : wynik partiotionIndex
+left
+jak wyglada tablica przekazana to qiockSort
+1 | adres : 0x77c0b0
+2 | adres : 0x77c0b4
+4 | adres : 0x77c0b8
+8 | adres : 0x77c0bc
+9 | adres : 0x77c0c0
+4 : beginIndex
+3 : endIndex 
+jak wyglada tablica wychodzaca z qiockSort
+1 | adres : 0x77c0b0
+2 | adres : 0x77c0b4
+4 | adres : 0x77c0b8
+8 | adres : 0x77c0bc
+9 | adres : 0x77c0c0
+right
+jak wyglada tablica przekazana to qiockSort
+1 | adres : 0x77c0b0
+2 | adres : 0x77c0b4
+4 | adres : 0x77c0b8
+8 | adres : 0x77c0bc
+9 | adres : 0x77c0c0
+5 : beginIndex
+4 : endIndex 
+jak wyglada tablica wychodzaca z qiockSort
+1 | adres : 0x77c0b0
+2 | adres : 0x77c0b4
+4 | adres : 0x77c0b8
+8 | adres : 0x77c0bc
+9 | adres : 0x77c0c0
+jak wyglada tablica wychodzaca z qiockSort
+1 | adres : 0x77c090
+2 | adres : 0x77c094
+4 | adres : 0x77c098
+8 | adres : 0x77c09c
+9 | adres : 0x77c0a0
+jak wyglada tablica wychodzaca z qiockSort
+1 | adres : 0x77c070
+2 | adres : 0x77c074
+4 | adres : 0x77c078
+8 | adres : 0x77c07c
+9 | adres : 0x77c080
+jak wyglada tablica wychodzaca z qiockSort
+1 | adres : 0x77c050
+2 | adres : 0x77c054
+4 | adres : 0x77c058
+9 | adres : 0x77c05c
+8 | adres : 0x77c060
+Array After Sort: 
+9 | adres : 0x77c010
+1 | adres : 0x77c014
+8 | adres : 0x77c018
+2 | adres : 0x77c01c
+4 | adres : 0x77c020
+How much numbers you want to add to array ? 

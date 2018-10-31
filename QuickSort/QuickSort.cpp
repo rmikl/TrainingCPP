@@ -17,7 +17,7 @@ int main()
         array.AddElement(numberToAdd);
     }
 
-
+	cout  << array.GetNumberOfElements() << " : number of elements" << endl;
     cout << "Array Before Sort: " << endl;
     array.ShowArray();
     array.QuickSort();
