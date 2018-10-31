@@ -7,8 +7,8 @@ class Array
 		int * array;
 		int arraySize;
 		int numberOfElements;
-		Array mergeArrayForMergeSort(Array left , Array right , Array mergedArray);
-		Array splitArrayForMergeSort(Array splitedArray);
+		Array mergeArrayForMergeSort(Array& left , Array& right , Array& mergedArray);
+		Array splitArrayForMergeSort(Array& splitedArray);
 		Array quickSort(Array, int beginIndex,int endIndex);
 		int partitionIndex(Array& array, int beginIndex, int endIndex);
 		
@@ -218,7 +218,7 @@ double Array::Median()
 }
 
 
-Array Array::mergeArrayForMergeSort(Array left, Array right, Array mergedArray)
+Array Array::mergeArrayForMergeSort(Array& left, Array& right, Array& mergedArray)
 {	
 //	cout << "merge exec" << endl;
 	int i,j,k,nL,nR;
@@ -280,7 +280,7 @@ Array Array::mergeArrayForMergeSort(Array left, Array right, Array mergedArray)
 	return mergedArray;
 }
 
-Array Array::splitArrayForMergeSort(Array splitedArray)
+Array Array::splitArrayForMergeSort(Array& splitedArray)
 {
 //	cout << "splitArrayForMergeSort exec" << endl;
 	int length;
